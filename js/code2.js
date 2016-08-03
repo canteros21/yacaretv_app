@@ -6,7 +6,7 @@ $(document).ready(function()
 
 $("#botonLogin").click(function(){
 
-	var url_service = "php/consultas.php";
+	var url_service = "http://yacaretv.info/app/php/consultas.php";
 	var usuario = $("#nombredeusuario");
 	var password = $("#clave");
 
@@ -45,7 +45,7 @@ $("#botonLogin").click(function(){
 
 function getDatos()
 {
-	var url_service = "php/consultas.php";
+	var url_service = "http://yacaretv.info/app/php/consultas.php";
 
 	$.ajax({
 		async:true,
@@ -83,7 +83,7 @@ function getDatos()
 
 function detallesProyecto(id)
 {
-	var url_service = "php/consultas.php";
+	var url_service = "http://yacaretv.info/app/php/consultas.php";
 
 	$.ajax({
 		async:true,

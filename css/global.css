@@ -1,0 +1,95 @@
+#inicioSesion {
+	background-color: #f3a242;
+}
+
+#header {
+	background-color: #606060; 
+	overflow: hidden;
+}
+
+#logo {
+	float: left;
+	padding: 10px 5px 5px 20px;
+	margin: 0;
+}
+
+#titulo {
+	color: #fff;
+	text-shadow: none;
+	line-height: 40px;
+	display: block;
+	margin-left: 120px;
+}
+
+#formulario {
+	overflow: hidden;
+}
+
+#formulario .renglonVacio {
+	font-size: 8px;
+}
+
+#formulario input {
+	background-color: #BC7B35;
+	border: none;
+	box-shadow: none;
+	color: #fff;
+	text-shadow: none;
+	float: left;
+}
+
+#formulario label {
+	color: #fff;
+	text-shadow: none;
+}
+
+#botonLogin {
+	background-color: #f3a242;
+}
+
+.trabajo {
+	background-color: #9C6015;
+	margin: 10px;
+	padding: 10px;
+	color: #fff;
+	text-shadow: none;
+}
+
+.portada {
+	display: block;
+	margin: 0 auto;
+	padding: 10px 0;
+}
+
+a {
+	text-decoration: none;
+	color: #fff;
+}
+
+h3, h4, p {
+	text-shadow: none;
+	color: #fff;
+}
+
+h4 {
+	margin-top: 50px;
+}
+
+p.descripcion {
+	display: block;
+	margin: 0;
+	padding: 5px;
+	background-color: #9C6015;
+}
+
+span {
+	color: #9C6015;
+}
+
+#notificacion {
+	background-color: #9C6015;
+	color: #fff;
+	text-shadow: none;
+	padding: 30px 0;
+	text-align: center;
+}

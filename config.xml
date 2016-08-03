@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='utf-8'?> <!-- denomina que es XML -->
+<!-- el id es el dominio pero invertido con el nombre al final
+     la version es de la app -->
+<widget id="info.yacaretv" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+    <name>Yacare App</name> <!-- Nombre de la APP -->
+    <description>
+        La app perfecta para los clientes de Yacare TV, para que puedan generar feedback sobre sus proyectos. <!-- Descripcion en phonegap, si no se especifica otra en el appleStore o googleStore, va a aparecer esta descripcion -->
+    </description>
+    <author email="canteros21@gmail.com" href="https://www.facebook.com/canteros21"> <!-- datos de contacto del autor -->
+      Nicolas Canteros
+    </author>
+    
+    <preference name="permissions" value="none" />
+    <preference name="phonegap-version" value="3.7.0" /> <!-- Version en la que se va a compilar, se puede elegir en base a lo que uno usa -->
+    <preference name="orientation" value="default" />  <!-- default es portait -->
+    <preference name="target-device" value="universal" /> <!-- si es para ciertos dispositivos -->
+    <preference name="fullscreen" value="false" /> <!-- si es full o no, si se ve el reloj y demas -->
+    <preference name="webviewbounce" value="true" /> 
+    <preference name="prerendered-icon" value="true" />
+    <preference name="stay-in-webview" value="false" />
+    <preference name="ios-statusbarstyle" value="black-opaque" />
+    <preference name="detect-data-types" value="true" />
+    <preference name="exit-on-suspend" value="false" />
+    <preference name="show-splash-screen-spinner" value="true" />
+    <preference name="auto-hide-splash-screen" value="true" />
+    <preference name="disable-cursor" value="false" />
+    <preference name="android-minSdkVersion" value="7" />
+    <preference name="android-installLocation" value="auto" />
+    
+    
+    <icon src="icon.png" /> <!-- Icono por default de la app -->
+    <!-- Variacion del icono por plataformas y medidas -->
+    <icon gap:platform="android" gap:qualifier="ldpi" src="res/icons/android/icon-36-ldpi.png" />
+    <icon gap:platform="android" gap:qualifier="mdpi" src="res/icons/android/icon-48-mdpi.png" />
+    <icon gap:platform="android" gap:qualifier="hdpi" src="res/icons/android/icon-72-hdpi.png" />
+    <icon gap:platform="android" gap:qualifier="xhdpi" src="res/icons/android/icon-96-xhdpi.png" />
+  
+    <!-- Splash -->
+    <gap:splash gap:platform="android" gap:qualifier="port-ldpi" src="res/screens/android/screen-ldpi-portrait.png" />
+    <gap:splash gap:platform="android" gap:qualifier="port-mdpi" src="res/screens/android/screen-mdpi-portrait.png" />
+    <gap:splash gap:platform="android" gap:qualifier="port-hdpi" src="res/screens/android/screen-hdpi-portrait.png" />
+    <gap:splash gap:platform="android" gap:qualifier="port-xhdpi" src="res/screens/android/screen-xhdpi-portrait.png" />
+
+    <access origin="*" />
+</widget>

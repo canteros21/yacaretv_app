@@ -1,123 +1,155 @@
-$(document).ready(function(){
+$(document).ready(function()
+{
+	console.log("ready");
+});
+var url_service = "http://yacaretv.info/app/php/consultas.php";
+
+$("#botonLogin").click(function(){
+
+	var url_service = "php/consultas.php";
+	var usuario = $("#nombredeusuario");
+	var password = $("#clave");
+
+	console.log("user: "+usuario.val()+" pass: "+password.val());
+
+	$.ajax({
+		async:true,
+		url:url_service,
+		data:'login=true&usuario='+usuario.val()+"&pass="+password.val(),
+		type:'post',
+		dataType:'text',
+		beforeSend: function()
+		{
+
+		},
+		success: function(response)
+		{
+			console.log(response);
+			var dataParseada = JSON.parse(response);
+			console.log(dataParseada.usuario);
 
 
 
-      $('#slides').slidesjs({
-        width: 940,
-        height: 270,
-        play: {
-          active: true,
-          auto: true,
-          interval: 8000,
-          swap: true
-        }
-      });
-    
 
-
+			$("#saludo").append(dataParseada.usuario);
+			$.mobile.changePage("#inicioProyectos");
+			getDatos();
+		},
+		error:function()
+		{
+			console.log("ERROR! login");
+		}
+	});
 });
 
 
+function getDatos()
+{
+	var url_service = "http://yacaretv.info/app/php/consultas.php";
+
+	$.ajax({
+		async:true,
+		url:url_service,
+		data:'buscarTrabajos=true',
+		type:'post',
+		dataType:'text',
+		beforeSend: function()
+		{
+
+		},
+		success: function(response)
+		{
+			console.log(response);
+			
+			var dataParseada = JSON.parse(response);
 
 
+			var strTrabajos = '';
+			$.each(dataParseada, function(i, trabajos){
+				console.log("i: " + i + " - trabajos: "+trabajos.nombre);
+				strTrabajos += '<a onclick="detallesProyecto('+i+');" href="#detalleProyecto" class="proyecto" id="trabajo_'+i+'"><div class="cont-imagen" style="background: url(http://yacaretv.info/admin/img/'+trabajos.rutaThumb+') no-repeat center top!important;"></div><div class="cont-info"><h5>'+ trabajos.nombre +'</h5><h6>Director: '+trabajos.director+'</h6><div class="btn-ver-mas">Ver avances</div></div></a>';
+			});
 
-function popUpVideo (num) {
-  switch (num) {
-    case 1:
-      var ruta = "//player.vimeo.com/video/96868515";
-      showSuscribe(ruta);
-      break;
-    case 2:
-      var ruta = "//player.vimeo.com/video/96865278";
-      showSuscribe(ruta);
-      break;
-  }
+			$("#prueba").html(strTrabajos);
+
+
+		},
+		error: function()
+		{
+			console.log("todo mal, error");
+		}
+	});
 }
 
+function detallesProyecto(id)
+{
+	var url_service = "http://yacaretv.info/app/php/consultas.php";
 
+	$.ajax({
+		async:true,
+		url:url_service,
+		data:'detalleTrabajos=true&idTrabajo='+id,
+		type:'post',
+		dataType:'text',
+		beforeSend: function()
+		{
 
-var popUp = false;
-function showSuscribe(ruta){
-          if(!popUp){
-              document.getElementById("popup-container").style.display = "block";
-              document.getElementById("slider").src = ruta;
-              popUp = true;
-            }
-          }
-
-function closeSuscribe(){
-  document.getElementById("popup-container").style.display = "none";
-  document.getElementById("slider").src = "#";
-  popUp = false;
+		},
+		success: function(response)
+		{
+			console.log(response);
+			
+			var dataParseada = JSON.parse(response);
+			var strEtapas = '';
+			$.each(dataParseada, function(i, etapas){
+				console.log("i: " + i + " - etapa: "+etapas.titulo);
+				strEtapas += '<div id="etapa_'+i+'"><h2>'+ etapas.titulo +'</h2><p>'+etapas.descripcion+'</p><img src="http://yacaretv.info/admin/img/'+etapas.archivo+'"></div>';
+			});
+			
+			$("#contenedorTrabajos").html(strEtapas);
+			$("#id_trabajo").val(id);
+			
+		},
+		error: function()
+		{
+			console.log("todo mal, error");
+		}
+	});
 }
 
+$(".post_comentario").click(function(){
+	var comentario 	= $("#comentarios").val();
+	var idTrabajo 	= $("#id_trabajo").val();
+	var dataComentario = 'enviarComentarios=true&comentario='+comentario+'&idTrabajo='+idTrabajo;
 
-/*********************************************************************************************************************************************************/
-/*********************************************************************************************************************************************************/
-/*********************************************************************************************************************************************************/
+	console.log(dataComentario);
 
+	$.ajax({
+		async:true,
+		data:dataComentario,
+		url:url_service,
+		type:'post',
+		dataType:'text',
+		beforeSend: function()
+		{
 
-function menuDesplegable() {
+		},
+		success: function(response)
+		{
+			console.log(response);
+			if(response != false)
+			{
+				$("#contenedor_comentarios").append(response);
+			}
+			else
+			{
+				alert("se produjo un error al ingresar el comentario");
+			}
+		},
+		error:function()
+		{
+			alert("error al comentar");
+		}
+	});
 
-  document.getElementById("btnDesplegable").style.display = "block";
-
-}
-
-function menuPlegar () {
-  document.getElementById("btnDesplegable").style.display = "none";
-}
-
-
-/*********************************************************************************************************************************************************/
-/*********************************************************************************************************************************************************/
-/*********************************************************************************************************************************************************/
-
-
-
-function initialize() {
-  
-  var latlng = new google.maps.LatLng(-27.463320, -58.828661);
-  var settings = {
-    zoom: 15,
-    center: latlng,
-    mapTypeControl: true,
-    mapTypeControlOptions: {style: google.maps.MapTypeControlStyle.DROPDOWN_MENU},
-    navigationControl: true,
-    navigationControlOptions: {style: google.maps.NavigationControlStyle.SMALL},
-    mapTypeId: google.maps.MapTypeId.ROADMAP
-  };
-  
-  var map = new google.maps.Map(document.getElementById("map_canvas"), settings);
-
-  var companyLogo = new google.maps.MarkerImage('img/yacare.png',
-    new google.maps.Size(60,120),
-    new google.maps.Point(0,0),
-    new google.maps.Point(15,95)
-);
-
-  var companyPos = new google.maps.LatLng(-27.463320, -58.828661);
-  
-  var companyMarker = new google.maps.Marker({
-    position: companyPos,
-    map: map,
-    icon: companyLogo,
-    title:"Yacare TV"
-  });
-
-  var contentString = '<div id="content" style="color: #000; width: 200px;">'+
-    '<div id="siteNotice">'+
-    '</div>'+
-    '<h1 id="firstHeading" class="firstHeading">Yacare TV</h1>'+
-    '<div id="bodyContent">'+
-    '<p>La productora audiovisual para TV, publicidad y redes sociales con más presencia en el Litoral Argentino. Con clientes tanto regionales como de todo el país.</p>'+
-    '</div>'+
-    '</div>';
- 
-var infowindow = new google.maps.InfoWindow({
-    content: contentString
 });
-
-google.maps.event.addListener(companyMarker, 'click', function() {
-infowindow.open(map,companyMarker);
-});
-}

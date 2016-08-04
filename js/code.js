@@ -116,7 +116,7 @@ function detallesProyecto(id)
 		}
 	});
 }
-
+/*
 $(".post_comentario").click(function(){
 	var comentario 	= $("#comentarios").val();
 	var idTrabajo 	= $("#id_trabajo").val();
@@ -152,4 +152,4 @@ $(".post_comentario").click(function(){
 		}
 	});
 
-});
+});*/

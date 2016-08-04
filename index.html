@@ -4,77 +4,88 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, user-scalable=1">
 		<title>Yacar&eacute; TV</title>
-		<link rel="stylesheet" href="http://www.yacaretv.info/app/css/jquery.mobile-1.4.4.css">
 		<link rel="stylesheet" href="http://www.yacaretv.info/app/css/global.css" type="text/css" />
-		
-		<link href='https://fonts.googleapis.com/css?family=Oxygen:400,300,700' rel='stylesheet' type='text/css'>
-		
-		<!-- Font Awesome -->
-		<link rel="stylesheet" type="text/css" href="http://yacaretv.info/src/fontAwesome/css/font-awesome.min.css"/>
-		
+		<link rel="stylesheet" href="http://www.yacaretv.info/app/css/jquery.mobile-1.4.4.css">
 		<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 		<script src="http://www.yacaretv.info/app/js/jquery.mobile-1.4.5.min.js"></script>
 				
 	</head>
 	<body>
 		<div id="inicioSesion" data-role="page" >
+			
 			<div data-role="header" id="header">
-				<h2 id="logo-largo"><img src="http://www.yacaretv.info/app/images/logo-app-largo.png" alt="Yacar&eacute; TV"></h2>
+				<h1 id="logo"><img src="http://www.yacaretv.info/app/img/logo.png" alt="Yacar&eacute; TV"></h1>
+				<p id="titulo">Clientes de Yacar&eacute; TV</p>
 			</div>
 
 			<div data-role="content">
 	        	<form id="formulario" method="post">
-					<h3><i class="fa fa-lock"></i> Login</h3>
-	        		<input type="text" id="nombredeusuario" name="nombredeusuario" placeholder="&#xf007; Usuario">
-	        		<input type="password" id="clave" name="clave" placeholder="&#xf084; Password" >
+	        		<label for='usuario'>Usuario: </label>
+	        		<input type="text" id="nombredeusuario" name="nombredeusuario">
+	        		<p class="renglonVacio">&nbsp;</p>
+	        		<label for='pass'>Contrase&ntilde;a: </label>
+	        		<input type="password" id="clave" name="clave" >
+	        		<p class="renglonVacio">&nbsp;</p>
 	        		<input type='button'value="Ingresar" id="botonLogin"/>
 	        	</form>
+
+					<script>
+					 /*
+					$('#formulario').submit(function() {
+						var datosUsuario = $("#nombredeusuario").val()
+						var datosPassword = $("#clave").val()
+						archivoValidacion = "http://www.yacaretv.info/app/login-validacion.php?jsoncallback=?"
+						 
+						$.getJSON( archivoValidacion, { usuario:datosUsuario ,password:datosPassword})
+						.done(function(respuestaServer) {
+
+							if(respuestaServer.validacion == "ok"){
+
+								console.log("llega al changepage");
+								var usuarioCorrecto = datosUsuario;
+								var passCorrecta = datosPassword;
+								$.mobile.changePage("#inicioProyectos");
+
+							} else {
+							    alert(respuestaServer.mensaje);
+							}
+						});
+						return false;
+					})*/
+					</script>
 	    	</div>
 		</div>
-		
-		
 		<div id="inicioProyectos" data-role="page" >
 			<div data-role="header" id="header">
-				<img src="http://www.yacaretv.info/app/images/logo-app.png" alt="Yacar&eacute; TV">
-				<h3 id="subtitulo">Listado de trabajo</h3>
+				<h1 id="logo"><img src="http://www.yacaretv.info/app/img/logo.png" alt="Yacar&eacute; TV"></h1>
+				<p id="titulo">Clientes de Yacar&eacute; TV</p>
 			</div>
 
 			<div data-role="content">
 				<div class="contenedorTrabajos">
-					<div class="contenedorTrabajos">
-						<div id="prueba">
+					<h1 id="saludo">Hola</h1>
+					<div class="contenedorTrabajos">																		
+						<div class="trabajo">
+							<div class="cajaTexto">
+								<h2>Trabajos</h2>
+								<div id="prueba">
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-		
-		
 		<div id="detalleProyecto" data-role="page" >
 			<div data-role="header" id="header">
-				<h1 id="logo"><img src="http://www.yacaretv.info/app/images/logo-app.png" alt="Yacar&eacute; TV"></h1>
-				<p id="titulo">Tu trabajo</p>
+				<h1 id="logo"><img src="http://www.yacaretv.info/app/img/logo.png" alt="Yacar&eacute; TV"></h1>
+				<p id="titulo">Clientes de Yacar&eacute; TV</p>
 			</div>
 
 			<div data-role="content">
 				<div id="contenedorTrabajos"></div>
 			</div>
-			<!--<div data-role="footer">
-				<h4>Correci&ioacute;n</h4>
-				<p>Esperamos tu devoluci&oacute;n para continuar</p>
-				<form method="post" action="">
-					<div data-role="fieldcontain" class="ui-field-contain">
-						<label for="comentarios">Comentarios</label>
-						<textarea cols="40" rows="8" name="comentarios" id="comentarios"></textarea>
-					</div>
-					<input type="hidden" name="id_trabajo" id="id_trabajo" />
-					<input type="button" class="post_comentario" value="Enviar" />
-				</form>
-				<div id="contenedor_comentarios"></div>
-			</div>-->
 		</div>
-		
-		
-		<script type="text/javascript" src="js/code.js"></script>
+		<script type="text/javascript" src="js/code2.js"></script>
 	</body>
 </html>
